@@ -29,8 +29,6 @@
  */
 
 
-$this->import('Encryption');
-
 /**
  * Table tl_secure_accessdata 
  */
@@ -271,7 +269,7 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['db_server'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'default'				=> $this->Encryption->encrypt('localhost'),
+			'default'				=> 'localhost',
 			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
 		),
 		'local_db_name' => array
@@ -300,7 +298,7 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['db_charset'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'default'				=> $this->Encryption->encrypt('UTF-8'),
+			'default'				=> 'UTF-8',
 			'eval'					=> array('encrypt'=>true, 'maxlength'=>8, 'tl_class'=>'w50')
 		),
 		'local_db_port' => array
@@ -308,7 +306,7 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['db_port'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'default'				=> $this->Encryption->encrypt('3306'),
+			'default'				=> '3306',
 			'eval'					=> array('encrypt'=>true, 'maxlength'=>4, 'tl_class'=>'w50')
 		),
 		
@@ -332,7 +330,7 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['db_server'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'default'				=> $this->Encryption->encrypt('localhost'),
+			'default'				=> 'localhost',
 			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
 		),
 		'preview_db_name' => array
@@ -361,7 +359,7 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['db_charset'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'default'				=> $this->Encryption->encrypt('UTF-8'),
+			'default'				=> 'UTF-8',
 			'eval'					=> array('encrypt'=>true, 'maxlength'=>8, 'tl_class'=>'w50')
 		),
 		'preview_db_port' => array
@@ -369,7 +367,7 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['db_port'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'default'				=> $this->Encryption->encrypt('3306'),
+			'default'				=> '3306',
 			'eval'					=> array('encrypt'=>true, 'maxlength'=>4, 'tl_class'=>'w50')
 		),
 		'preview_ftp_server' => array
@@ -407,7 +405,7 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['ftp_port'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'default'				=> $this->Encryption->encrypt('21'),
+			'default'				=> '21',
 			'eval'					=> array('encrypt'=>true, 'maxlength'=>4, 'tl_class'=>'w50')
 		),
 		'preview_ssh_server' => array
@@ -422,7 +420,7 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['ssh_port'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'default'				=> $this->Encryption->encrypt('22'),
+			'default'				=> '22',
 			'eval'					=> array('encrypt'=>true, 'maxlength'=>4, 'tl_class'=>'w50')
 		),
 		'preview_ssh_user' => array
@@ -460,7 +458,7 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['db_server'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'default'				=> $this->Encryption->encrypt('localhost'),
+			'default'				=> 'localhost',
 			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
 		),
 		'online_db_name' => array
@@ -489,7 +487,7 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['db_charset'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'default'				=> $this->Encryption->encrypt('UTF-8'),
+			'default'				=> 'UTF-8',
 			'eval'					=> array('encrypt'=>true, 'maxlength'=>8, 'tl_class'=>'w50')
 		),
 		'online_db_port' => array
@@ -497,7 +495,7 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['db_port'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'default'				=> $this->Encryption->encrypt('3306'),
+			'default'				=> '3306',
 			'eval'					=> array('encrypt'=>true, 'maxlength'=>4, 'tl_class'=>'w50')
 		),
 		'online_ftp_server' => array
@@ -535,7 +533,7 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['ftp_port'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'default'				=> $this->Encryption->encrypt('21'),
+			'default'				=> '21',
 			'eval'					=> array('encrypt'=>true, 'maxlength'=>4, 'tl_class'=>'w50')
 		),
 		'online_ssh_server' => array
@@ -550,7 +548,7 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['ssh_port'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'default'				=> $this->Encryption->encrypt('22'),
+			'default'				=> '22',
 			'eval'					=> array('encrypt'=>true, 'maxlength'=>4, 'tl_class'=>'w50')
 		),
 		'online_ssh_user' => array
@@ -640,7 +638,7 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['mail_smtp_port'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'default'				=> $this->Encryption->encrypt('25'),
+			'default'				=> '25',
 			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
 		),
 		'mail_imap_host' => array
@@ -655,7 +653,7 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['mail_imap_port'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'default'				=> $this->Encryption->encrypt('993'),
+			'default'				=> '993',
 			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
 		),
 		'mail_pop_host' => array
@@ -670,7 +668,7 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['mail_pop_port'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'default'				=> $this->Encryption->encrypt('995'),
+			'default'				=> '995',
 			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
 		)
 	)
