@@ -40,7 +40,7 @@ $GLOBALS['TL_LANG']['tl_secure_accessdata']['label_callback_protect_groups'] = '
 /**
  * Fields
  */
-$GLOBALS['TL_LANG']['tl_secure_accessdata']['access_title'] = array('Secure accessdata name', 'Secure accessdata name');
+$GLOBALS['TL_LANG']['tl_secure_accessdata']['access_title'] = array('Name', 'Name of this accessdata.');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['type'] = array('Type', 'Here, the access-type is selected.');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['author'] = array('Author', 'Author of this accessdata.');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['protect'] = array('Protect access', 'Here you can access only to specific users and groups to share.');
@@ -92,19 +92,19 @@ $GLOBALS['TL_LANG']['tl_secure_accessdata']['mail_pop_port'] = array('Email pop 
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['title_legend'] = 'Title and type';
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['protect_legend'] = 'Protect access';
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['info_legend'] = 'Additional informations';
-$GLOBALS['TL_LANG']['tl_secure_accessdata']['weblogin_legend'] = 'Web login accessdata';
-$GLOBALS['TL_LANG']['tl_secure_accessdata']['contao_legend'] = 'Contao accessdata';
-$GLOBALS['TL_LANG']['tl_secure_accessdata']['local_legend'] = 'Local accessdata';
-$GLOBALS['TL_LANG']['tl_secure_accessdata']['local_db_legend'] = 'Local database accessdata';
-$GLOBALS['TL_LANG']['tl_secure_accessdata']['preview_legend'] = 'Preview general accessdata';
-$GLOBALS['TL_LANG']['tl_secure_accessdata']['preview_db_legend'] = 'Preview database accessdata';
-$GLOBALS['TL_LANG']['tl_secure_accessdata']['preview_ftp_legend'] = 'Preview FTP accessdata';
-$GLOBALS['TL_LANG']['tl_secure_accessdata']['preview_ssh_legend'] = 'Preview SSH accessdata';
-$GLOBALS['TL_LANG']['tl_secure_accessdata']['online_legend'] = 'Online general accessdata';
-$GLOBALS['TL_LANG']['tl_secure_accessdata']['online_db_legend'] = 'Online database accessdata';
-$GLOBALS['TL_LANG']['tl_secure_accessdata']['online_ftp_legend'] = 'Online FTP accessdata';
-$GLOBALS['TL_LANG']['tl_secure_accessdata']['online_ssh_legend'] = 'Online SSH accessdata';
-$GLOBALS['TL_LANG']['tl_secure_accessdata']['webadmin_legend'] = 'Webadmin accessdata';
+$GLOBALS['TL_LANG']['tl_secure_accessdata']['weblogin_legend'] = 'Web login';
+$GLOBALS['TL_LANG']['tl_secure_accessdata']['contao_legend'] = 'Contao';
+$GLOBALS['TL_LANG']['tl_secure_accessdata']['local_legend'] = 'Local general';
+$GLOBALS['TL_LANG']['tl_secure_accessdata']['local_db_legend'] = 'Local database';
+$GLOBALS['TL_LANG']['tl_secure_accessdata']['preview_legend'] = 'Preview general';
+$GLOBALS['TL_LANG']['tl_secure_accessdata']['preview_db_legend'] = 'Preview database';
+$GLOBALS['TL_LANG']['tl_secure_accessdata']['preview_ftp_legend'] = 'Preview FTP';
+$GLOBALS['TL_LANG']['tl_secure_accessdata']['preview_ssh_legend'] = 'Preview SSH';
+$GLOBALS['TL_LANG']['tl_secure_accessdata']['online_legend'] = 'Online general';
+$GLOBALS['TL_LANG']['tl_secure_accessdata']['online_db_legend'] = 'Online database';
+$GLOBALS['TL_LANG']['tl_secure_accessdata']['online_ftp_legend'] = 'Online FTP';
+$GLOBALS['TL_LANG']['tl_secure_accessdata']['online_ssh_legend'] = 'Online SSH';
+$GLOBALS['TL_LANG']['tl_secure_accessdata']['webadmin_legend'] = 'Webadmin';
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['mail_legend'] = 'Email';
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['mail_smtp_legend'] = 'Email (SMTP)';
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['mail_imap_legend'] = 'Email (IMAP)';
@@ -114,10 +114,10 @@ $GLOBALS['TL_LANG']['tl_secure_accessdata']['mail_pop_legend'] = 'Email (POP)';
 /**
  * Buttons
  */
-$GLOBALS['TL_LANG']['tl_secure_accessdata']['new']    = array('Add new accessdata', 'Add new accessdata');
-$GLOBALS['TL_LANG']['tl_secure_accessdata']['edit']   = array('Edit accessdata', 'Edit accessdata ID %s');
-$GLOBALS['TL_LANG']['tl_secure_accessdata']['copy']   = array('Duplicate accessdata', 'Duplicate accessdata ID %s');
+$GLOBALS['TL_LANG']['tl_secure_accessdata']['new'] = array('Add new accessdata', 'Add new accessdata');
+$GLOBALS['TL_LANG']['tl_secure_accessdata']['edit'] = array('Edit accessdata', 'Edit accessdata ID %s');
+$GLOBALS['TL_LANG']['tl_secure_accessdata']['copy'] = array('Duplicate accessdata', 'Duplicate accessdata ID %s');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['delete'] = array('Delete accessdata', 'Delete accessdata ID %s');
-$GLOBALS['TL_LANG']['tl_secure_accessdata']['show']   = array('Show accessdata', 'Show accessdata ID %s');
+$GLOBALS['TL_LANG']['tl_secure_accessdata']['show'] = array('Show accessdata', 'Show accessdata ID %s');
 
 ?>

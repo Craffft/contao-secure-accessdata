@@ -44,9 +44,11 @@ $GLOBALS['BE_MOD']['system']['tl_secure_accessdata'] = array
  */
 $GLOBALS['TL_SADTY'] = array
 (
+	'contao_login' => 'contao_login',
 	'weblogin' => 'weblogin',
+	'mail' => 'mail',
 	'project' => 'project',
-	'mail' => 'mail'
+	'online_project' => 'online_project'
 );
 
 

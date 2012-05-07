@@ -107,12 +107,24 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 		'default'					=> '{title_legend},access_title,type,author;
 										{protect_legend},protect;
 										{info_legend},info',
+		'contao_login'				=> '{title_legend},access_title,type,author;
+										{contao_legend},contao_user,contao_pwd,contao_install_pwd;
+										{protect_legend},protect;
+										{info_legend},info',
 		'weblogin'					=> '{title_legend},access_title,type,author;
 										{weblogin_legend},weblogin_url,weblogin_name,weblogin_pwd;
 										{protect_legend},protect;
 										{info_legend},info',
+		'mail'						=> '{title_legend},access_title,type,author;
+										{mail_legend},mail_name,mail_email,mail_loginname,mail_pwd,mail_crypt;
+										{mail_smtp_legend},mail_smtp_host,mail_smtp_port;
+										{mail_imap_legend},mail_imap_host,mail_imap_port;
+										{mail_pop_legend},mail_pop_host,mail_pop_port;
+										{protect_legend},protect;
+										{info_legend},info',
 		'project'					=> '{title_legend},access_title,type,author;
 										{contao_legend},contao_user,contao_pwd,contao_install_pwd;
+										{webadmin_legend},webadmin_url,webadmin_name,webadmin_pwd;
 										{local_legend},local_url,local_root;
 										{local_db_legend},local_db_server,local_db_name,local_db_user,local_db_pwd,local_db_charset,local_db_port;
 										{preview_legend},preview_url,preview_root;
@@ -123,14 +135,15 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 										{online_db_legend},online_db_server,online_db_name,online_db_user,online_db_pwd,online_db_charset,online_db_port;
 										{online_ftp_legend},online_ftp_server,online_ftp_user,online_ftp_pwd,online_ftp_protocol,online_ftp_port;
 										{online_ssh_legend},online_ssh_server,online_ssh_port,online_ssh_user,online_ssh_pwd;
-										{webadmin_legend},webadmin_url,webadmin_name,webadmin_pwd;
 										{protect_legend},protect;
 										{info_legend},info',
-		'default'					=> '{title_legend},access_title,type,author;
-										{mail_legend},mail_name,mail_email,mail_loginname,mail_pwd,mail_crypt;
-										{mail_smtp_legend},mail_smtp_host,mail_smtp_port;
-										{mail_imap_legend},mail_imap_host,mail_imap_port;
-										{mail_pop_legend},mail_pop_host,mail_pop_port;
+		'online_project'			=> '{title_legend},access_title,type,author;
+										{webadmin_legend},webadmin_url,webadmin_name,webadmin_pwd;
+										{contao_legend},contao_user,contao_pwd,contao_install_pwd;
+										{online_legend},online_url,online_root;
+										{online_db_legend},online_db_server,online_db_name,online_db_user,online_db_pwd,online_db_charset,online_db_port;
+										{online_ftp_legend},online_ftp_server,online_ftp_user,online_ftp_pwd,online_ftp_protocol,online_ftp_port;
+										{online_ssh_legend},online_ssh_server,online_ssh_port,online_ssh_user,online_ssh_pwd;
 										{protect_legend},protect;
 										{info_legend},info'
 	),
@@ -154,7 +167,7 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 		'type' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['type'],
-			'default'				=> 'weblogin',
+			'default'				=> 'contao_login',
 			'exclude'				=> true,
 			'inputType'				=> 'select',
 			'options'				=> $GLOBALS['TL_SADTY'],

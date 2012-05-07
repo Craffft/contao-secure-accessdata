@@ -32,9 +32,11 @@
 /**
  * Secure Accessdata types
  */
-$GLOBALS['TL_LANG']['SADTY']['project'] = array('Project', 'Secure accessdata for an project.');
-$GLOBALS['TL_LANG']['SADTY']['weblogin'] = array('Web login', 'Secure accessdata for an web login.');
-$GLOBALS['TL_LANG']['SADTY']['mail'] = array('Email account', 'Secure accessdata for an email account.');
+$GLOBALS['TL_LANG']['SADTY']['contao_login'] = array('Contao login', 'Contao login');
+$GLOBALS['TL_LANG']['SADTY']['weblogin'] = array('Web login', 'Web login');
+$GLOBALS['TL_LANG']['SADTY']['mail'] = array('Email account', 'Email account');
+$GLOBALS['TL_LANG']['SADTY']['project'] = array('Project', 'Project');
+$GLOBALS['TL_LANG']['SADTY']['online_project'] = array('Online-Project', 'Online-Project.');
 
 
 /**
@@ -46,6 +48,5 @@ $GLOBALS['TL_LANG']['SAD_FTP_PROTOCOL']['ftp_ssl_implicit'] = array('FTP with SS
 $GLOBALS['TL_LANG']['SAD_FTP_PROTOCOL']['ftp_tls_ssl'] = array('FTP with TLS/SSL', 'FTP with TLS/SSL');
 $GLOBALS['TL_LANG']['SAD_FTP_PROTOCOL']['webdav'] = array('WEBDAV', 'WEBDAV');
 $GLOBALS['TL_LANG']['SAD_FTP_PROTOCOL']['webdav_https'] = array('WEBDAV HTTPS', 'WEBDAV HTTPS');
-
 
 ?>
