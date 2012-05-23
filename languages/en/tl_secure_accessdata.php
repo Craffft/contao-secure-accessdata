@@ -43,6 +43,7 @@ $GLOBALS['TL_LANG']['tl_secure_accessdata']['label_callback_protect_groups'] = '
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['access_title'] = array('Name', 'Name of this accessdata.');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['type'] = array('Type', 'Here, the access-type is selected.');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['author'] = array('Author', 'Author of this accessdata.');
+$GLOBALS['TL_LANG']['tl_secure_accessdata']['li_crm_customer'] = array('Customer', 'Select a customer from whom this access to be assigned.');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['protect'] = array('Protect access', 'Here you can access only to specific users and groups to share.');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['protect_users'] = array('Users with access', 'Select the users from which access may have on this access.');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['protect_groups'] = array('Groups with access', 'Select the groups from which access may have on this access.');

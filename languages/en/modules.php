@@ -32,6 +32,6 @@
 /**
  * Back end modules
  */
-$GLOBALS['TL_LANG']['MOD']['tl_secure_accessdata'] = array('Secure accessdata', 'This module can access data for various types of access are stored encrypted.');
+$GLOBALS['TL_LANG']['MOD']['tl_secure_accessdata'] = array('Access management', 'This module can access data for various types of access are stored encrypted.');
 
 ?>

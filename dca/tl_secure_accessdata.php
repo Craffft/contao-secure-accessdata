@@ -29,6 +29,10 @@
  */
 
 
+// Import
+$this->import('SecureAccessdata');
+
+
 /**
  * Table tl_secure_accessdata 
  */
@@ -39,10 +43,7 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 	'config' => array
 	(
 		'dataContainer'				=> 'Table',
-		'enableVersioning'			=> true,
-		'onload_callback'			=> array(
-											array('tl_secure_accessdata', 'onload_callback')
-										)
+		'enableVersioning'			=> true
 	),
 
 	// List
@@ -52,13 +53,15 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 		(
 			'mode'					=> 2,
 			'fields'				=> array('type', 'access_title'),
-			'flag'					=> 11
+			'flag'					=> 1,
+			'panelLayout'			=> 'filter;search,sort,limit',
+			'filter'				=> $this->SecureAccessdata->filterFields()
 		),
 		'label' => array
 		(
-			'fields'				=> array('access_title'),
-			'format'				=> '%s',
-			'label_callback'		=> array('tl_secure_accessdata', 'label_callback')
+			'fields'				=> array('icon', 'access_title', 'type', 'author'),
+			'showColumns'			=> true,
+			'label_callback'		=> array('tl_secure_accessdata', 'labelCallback')
 		),
 		'global_operations' => array
 		(
@@ -104,25 +107,25 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 	'palettes' => array
 	(
 		'__selector__'				=> array('type', 'protect'),
-		'default'					=> '{title_legend},access_title,type,author;
+		'default'					=> '{title_legend},access_title,type,author,li_crm_customer;
 										{protect_legend},protect;
 										{info_legend},info',
-		'contao_login'				=> '{title_legend},access_title,type,author;
+		'contao_login'				=> '{title_legend},access_title,type,author,li_crm_customer;
 										{contao_legend},contao_user,contao_pwd,contao_install_pwd;
 										{protect_legend},protect;
 										{info_legend},info',
-		'weblogin'					=> '{title_legend},access_title,type,author;
+		'weblogin'					=> '{title_legend},access_title,type,author,li_crm_customer;
 										{weblogin_legend},weblogin_url,weblogin_name,weblogin_pwd;
 										{protect_legend},protect;
 										{info_legend},info',
-		'mail'						=> '{title_legend},access_title,type,author;
+		'mail'						=> '{title_legend},access_title,type,author,li_crm_customer;
 										{mail_legend},mail_name,mail_email,mail_loginname,mail_pwd,mail_crypt;
 										{mail_smtp_legend},mail_smtp_host,mail_smtp_port;
 										{mail_imap_legend},mail_imap_host,mail_imap_port;
 										{mail_pop_legend},mail_pop_host,mail_pop_port;
 										{protect_legend},protect;
 										{info_legend},info',
-		'project'					=> '{title_legend},access_title,type,author;
+		'project'					=> '{title_legend},access_title,type,author,li_crm_customer;
 										{contao_legend},contao_user,contao_pwd,contao_install_pwd;
 										{webadmin_legend},webadmin_url,webadmin_name,webadmin_pwd;
 										{local_legend},local_url,local_root;
@@ -137,7 +140,7 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 										{online_ssh_legend},online_ssh_server,online_ssh_port,online_ssh_user,online_ssh_pwd;
 										{protect_legend},protect;
 										{info_legend},info',
-		'online_project'			=> '{title_legend},access_title,type,author;
+		'online_project'			=> '{title_legend},access_title,type,author,li_crm_customer;
 										{webadmin_legend},webadmin_url,webadmin_name,webadmin_pwd;
 										{contao_legend},contao_user,contao_pwd,contao_install_pwd;
 										{online_legend},online_url,online_root;
@@ -160,14 +163,20 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 		'access_title' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['access_title'],
+			'filter'				=> true,
+			'search'				=> true,
+			'sorting'				=> true,
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'mandatory'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('mandatory'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
 		),
 		'type' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['type'],
 			'default'				=> 'contao_login',
+			'filter'				=> true,
+			'search'				=> true,
+			'sorting'				=> true,
 			'exclude'				=> true,
 			'inputType'				=> 'select',
 			'options'				=> $GLOBALS['TL_SADTY'],
@@ -178,10 +187,13 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['author'],
 			'default'				=> $this->User->id,
+			'filter'				=> true,
+			//'search'				=> true,
+			'sorting'				=> true,
 			'exclude'				=> true,
 			'inputType'				=> 'select',
 			'foreignKey'			=> 'tl_user.name',
-			'eval'					=> array('encrypt'=>true, 'doNotCopy'=>true, 'mandatory'=>true, 'includeBlankOption'=>false, 'tl_class'=>'w50')
+			'eval'					=> array('doNotCopy'=>true, 'mandatory'=>true, 'includeBlankOption'=>false, 'tl_class'=>'w50')
 		),
 		'protect' => array
 		(
@@ -194,7 +206,6 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['protect_users'],
 			'exclude'				=> true,
-			'filter'				=> true,
 			'inputType'				=> 'checkbox',
 			'foreignKey'			=> 'tl_user.name',
 			'eval'					=> array('encrypt'=>true, 'multiple'=>true, 'tl_class'=>'w50')
@@ -203,7 +214,6 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['protect_groups'],
 			'exclude'				=> true,
-			'filter'				=> true,
 			'inputType'				=> 'checkbox',
 			'foreignKey'			=> 'tl_user_group.name',
 			'eval'					=> array('encrypt'=>true, 'multiple'=>true, 'tl_class'=>'w50')
@@ -688,131 +698,98 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 );
 
 
+/**
+ * Settings for Liplex CRM
+ */
+if(isset($GLOBALS['BE_MOD']['li_crm']))
+{
+	$GLOBALS['TL_DCA']['tl_secure_accessdata']['fields']['li_crm_customer'] = array
+	(
+	    'label'                 => &$GLOBALS['TL_LANG']['tl_secure_accessdata']['li_crm_customer'],
+	    'inputType'             => 'select',
+		'filter'				=> true,
+		//'search'				=> true,
+		'sorting'				=> true,
+	    'exclude'   			=> true,
+	    'options_callback'      => array('Customer', 'getCustomerOptions'),
+	    'eval'                  => array('mandatory'=>true, 'tl_class'=>'w50', 'chosen'=>true, 'includeBlankOption'=>true, 'submitOnChange'=>true)
+	);
+	
+	// Add li_crm_customer to label fields
+	array_insert($GLOBALS['TL_DCA']['tl_secure_accessdata']['list']['label']['fields'], 4, array
+	(
+	    'li_crm_customer'
+	));
+}
+
+
+/**
+ * tl_secure_accessdata class.
+ * 
+ * @extends Backend
+ */
 class tl_secure_accessdata extends Backend
 {
+	/**
+	 * __construct function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
 	public function __construct()
 	{
+		// Import
 		$this->import('Database');
 		$this->import('Encryption');
 		$this->import('BackendUser', 'User');
 	}
 	
 	
-	public function onload_callback(DataContainer $dc)
+	/**
+	 * labelCallback
+	 * @param array
+	 * @param string
+	 * @param DataContainer
+	 * @param array
+	 * @return string
+	 */
+	public function labelCallback($row, $label, DataContainer $dc, $args)
 	{
-		$arrEntries = array(0);
-		
-		// Get all secure accessdata results
-		$objSecureAccessdata = $this->Database->prepare("SELECT * FROM tl_secure_accessdata")
-								->execute();
-		
-		while($objSecureAccessdata->fetchAssoc())
+		// Set image
+		$image = 'protect';
+
+		if ($this->Encryption->decrypt($row['protect']) == '1')
 		{
-			$id = $objSecureAccessdata->id;
-			$author = $this->Encryption->decrypt($objSecureAccessdata->author);
-			$protect = $this->Encryption->decrypt($objSecureAccessdata->protect);
-			$protect_users = deserialize($objSecureAccessdata->protect_users);
-			$protect_groups = deserialize($objSecureAccessdata->protect_groups);
+			$image .= '_';
+		}
+		
+		$args[0] = sprintf('<div class="list_icon_new" style="background-image:url(\'%ssystem/themes/%s/images/%s.gif\')">&nbsp;</div>', TL_SCRIPT_URL, $this->getTheme(), $image);
+		
+		// Set User
+		if(is_numeric($args[3]))
+		{
+			$objUser = $this->Database->prepare("SELECT name FROM tl_user WHERE id=?")
+									  ->limit(1)
+									  ->execute($args[3]);
+			$args[3] = $objUser->name;
 			
-			// If not protect
-			if($protect != 1)
+		}
+		
+		// Only Liplex CRM
+		if(isset($GLOBALS['BE_MOD']['li_crm']))
+		{
+			// Set customer
+			if(is_numeric($args[4]))
 			{
-				$arrEntries[] = $id;
-				continue;
-			}
-			
-			// If user is admin
-			if($this->User->admin == 1)
-			{
-				$arrEntries[] = $id;
-				continue;
-			}
-			
-			// If user is author
-			if($this->User->id == $author)
-			{
-				$arrEntries[] = $id;
-				continue;
-			}
-			
-			// If user is in user array
-			for($i=0; count($protect_users)>$i; $i++)
-			{
-				if($this->User->id == $this->Encryption->decrypt($protect_users[$i]))
-				{
-					$arrEntries[] = $id;
-					continue;
-				}
-			}
-			
-			// If a group from user exists in group array
-			for($i=0; count($protect_groups)>$i; $i++)
-			{
-				$protectGroup = $this->Encryption->decrypt($protect_groups[$i]);
+				$objMember = $this->Database->prepare("SELECT customerNumber, customerName FROM tl_member WHERE id=?")
+										  ->limit(1)
+										  ->execute($args[4]);
+				$args[4] = $objMember->customerNumber . ' ' . $objMember->customerName;
 				
-				if(!empty($protectGroup) && $protectGroup!=NULL)
-				{
-					foreach($this->User->groups as $userGroup)
-					{
-						if(!empty($userGroup) && $userGroup!=NULL)
-						{
-							if($userGroup == $protectGroup)
-							{
-								$arrEntries[] = $id;
-								continue;
-							}
-						}
-					}
-				}
 			}
 		}
 		
-		// Generate filter
-		for($i=0; count($arrEntries)>$i; $i++)
-		{
-			if($i==0)
-			{
-				$filter = 'id='.$arrEntries[$i];
-			}
-			else
-			{
-				$filter .= ' || id='.$arrEntries[$i];
-			}
-		}
-		
-		// Set filter
-		$GLOBALS['TL_DCA']['tl_secure_accessdata']['list']['sorting']['filter'][0] = array($filter);
-	}
-	
-	
-	public function label_callback($row, $label)
-	{
-		if($this->Encryption->decrypt($row['protect']) == 1)
-		{
-			$label_UnG = '';
-			
-			$users = $this->Encryption->decrypt(deserialize($row['protect_users']));
-			$groups = $this->Encryption->decrypt(deserialize($row['protect_groups']));
-			
-			if(!empty($users) && count($users)>0)
-			{
-				$label_UnG .= sprintf('<img src="system/themes/default/images/user.gif" alt="%s" style="border: 0;">', $GLOBALS['TL_LANG']['tl_secure_accessdata']['label_callback_protect_users']);
-			}
-			
-			if(!empty($groups) && count($groups)>0)
-			{
-				$label_UnG .= sprintf('<img src="system/themes/default/images/group.gif" alt="%s" style="border: 0;">', $GLOBALS['TL_LANG']['tl_secure_accessdata']['label_callback_protect_groups']);
-			}
-			
-			$label .= ' - '.$GLOBALS['TL_LANG']['tl_secure_accessdata']['label_callback_protect'];
-			
-			if(!empty($label_UnG))
-			{
-				$label .= ' ('.$label_UnG.')';
-			}
-		}
-		
-		return $label;
+		return $args;
 	}
 }
 

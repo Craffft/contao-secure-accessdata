@@ -40,6 +40,23 @@ $GLOBALS['BE_MOD']['system']['tl_secure_accessdata'] = array
 
 
 /**
+ * Settings for Liplex CRM
+ */
+if(isset($GLOBALS['BE_MOD']['li_crm']))
+{
+	$GLOBALS['BE_MOD']['li_crm']['tl_secure_accessdata'] = $GLOBALS['BE_MOD']['system']['tl_secure_accessdata'];
+	unset($GLOBALS['BE_MOD']['system']['tl_secure_accessdata']);
+}
+
+
+/**
+ * Only to test runonce
+ *
+include(TL_ROOT . '/system/modules/secure_accessdata/config/runonce.php');
+*/
+
+
+/**
  * Secure Accessdata types
  */
 $GLOBALS['TL_SADTY'] = array
@@ -74,5 +91,5 @@ $GLOBALS['TL_SAD_MAIL_CRYPT'] = array
 	'ssl' => 'SSL',
 	'tls' => 'TLS'
 );
- 
+
 ?>

@@ -32,6 +32,6 @@
 /**
  * Back end modules
  */
-$GLOBALS['TL_LANG']['MOD']['tl_secure_accessdata'] = array('Sichere Zugangsdaten', 'In diesem Modul können Zugangsdaten für verschiedene Zugangsarten verschlüsselt abgelegt werden.');
+$GLOBALS['TL_LANG']['MOD']['tl_secure_accessdata'] = array('Zugangsverwaltung', 'In diesem Modul können Zugangsdaten in verschiedenen Zugangstypen verschlüsselt abgelegt werden.');
  
 ?>
