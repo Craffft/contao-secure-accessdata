@@ -50,13 +50,6 @@ if(isset($GLOBALS['BE_MOD']['li_crm']))
 
 
 /**
- * Only to test runonce
- *
-include(TL_ROOT . '/system/modules/secure_accessdata/config/runonce.php');
-*/
-
-
-/**
  * Secure Accessdata types
  */
 $GLOBALS['TL_SADTY'] = array
