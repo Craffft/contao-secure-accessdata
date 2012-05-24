@@ -37,8 +37,6 @@ class SecureAccessdataRunonce extends Controller
 	{
 		parent::__construct();
 
-		// Fix potential Exception on line 0 because of __destruct method (see http://dev.contao.org/issues/2236)
-		$this->import((TL_MODE=='BE' ? 'BackendUser' : 'FrontendUser'), 'User');
 		$this->import('Database');
 		$this->import('Encryption');
 	}
@@ -50,17 +48,6 @@ class SecureAccessdataRunonce extends Controller
 	public function run()
 	{
 		$this->upgrade_to_1_1_0();
-		
-		$this->import('Files');
-		$arrModules = scan(TL_ROOT . '/system/modules/');
-
-		foreach ($arrModules as $strModule)
-		{
-			if ((@include(TL_ROOT . '/system/modules/' . $strModule . '/config/runonce.php')) !== false)
-			{
-				$this->Files->delete('system/modules/' . $strModule . '/config/runonce.php');
-			}
-		}
 	}
 	
 	
@@ -72,22 +59,25 @@ class SecureAccessdataRunonce extends Controller
 	 */
 	private function upgrade_to_1_1_0()
 	{
-		// Read fields decrypt them an save them
-		$objData = $this->Database->prepare("SELECT id, access_title, author FROM tl_secure_accessdata")
-								  ->execute();
-		
-		while($objData->next())
+		if($this->Database->tableExists('tl_secure_accessdata'))
 		{
-			$arrSet = array();
+			// Read fields decrypt them an save them
+			$objData = $this->Database->prepare("SELECT id, access_title, author FROM tl_secure_accessdata")
+									  ->execute();
 			
-			// Set vars for update
-			$arrSet['access_title'] = ($this->Encryption->decrypt($objData->access_title) == '') ? $objData->access_title : $this->Encryption->decrypt($objData->access_title);
-			$arrSet['author'] = ($this->Encryption->decrypt($objData->author) == '') ? $objData->author : $this->Encryption->decrypt($objData->author);
-			
-			// Do update
-			$this->Database->prepare("UPDATE tl_secure_accessdata %s WHERE id=?")
-						   ->set($arrSet)
-						   ->execute($objData->id);
+			while($objData->next())
+			{
+				$arrSet = array();
+				
+				// Set vars for update
+				$arrSet['access_title'] = ($this->Encryption->decrypt($objData->access_title) == '') ? $objData->access_title : $this->Encryption->decrypt($objData->access_title);
+				$arrSet['author'] = ($this->Encryption->decrypt($objData->author) == '') ? $objData->author : $this->Encryption->decrypt($objData->author);
+				
+				// Do update
+				$this->Database->prepare("UPDATE tl_secure_accessdata %s WHERE id=?")
+							   ->set($arrSet)
+							   ->execute($objData->id);
+			}
 		}
 	}
 }
