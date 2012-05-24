@@ -126,8 +126,8 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 										{protect_legend},protect;
 										{info_legend},info',
 		'project'					=> '{title_legend},access_title,type,author,li_crm_customer;
-										{contao_legend},contao_user,contao_pwd,contao_install_pwd;
 										{webadmin_legend},webadmin_url,webadmin_name,webadmin_pwd;
+										{contao_legend},contao_user,contao_pwd,contao_install_pwd;
 										{local_legend},local_url,local_root;
 										{local_db_legend},local_db_server,local_db_name,local_db_user,local_db_pwd,local_db_charset,local_db_port;
 										{preview_legend},preview_url,preview_root;
