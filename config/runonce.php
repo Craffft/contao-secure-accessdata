@@ -14,7 +14,8 @@ class SecureAccessdataRunonce extends Controller
 		$this->import('Database');
 		$this->import('Encryption');
 	}
-
+	
+	
 	/**
 	 * Execute all runonce files in module config directories
 	 */
@@ -22,7 +23,7 @@ class SecureAccessdataRunonce extends Controller
 	{
 		$this->upgrade_to_1_1_0();
 		
-		/*$this->import('Files');
+		$this->import('Files');
 		$arrModules = scan(TL_ROOT . '/system/modules/');
 
 		foreach ($arrModules as $strModule)
@@ -31,10 +32,16 @@ class SecureAccessdataRunonce extends Controller
 			{
 				$this->Files->delete('system/modules/' . $strModule . '/config/runonce.php');
 			}
-		}*/
+		}
 	}
 	
 	
+	/**
+	 * upgrade_to_1_1_0 function.
+	 * 
+	 * @access private
+	 * @return void
+	 */
 	private function upgrade_to_1_1_0()
 	{
 		// Read fields decrypt them an save them
@@ -44,12 +51,15 @@ class SecureAccessdataRunonce extends Controller
 		while($objData->next())
 		{
 			$arrSet = array();
+			
+			// Set vars for update
 			$arrSet['access_title'] = ($this->Encryption->decrypt($objData->access_title) == '') ? $objData->access_title : $this->Encryption->decrypt($objData->access_title);
 			$arrSet['author'] = ($this->Encryption->decrypt($objData->author) == '') ? $objData->author : $this->Encryption->decrypt($objData->author);
 			
-			$insertElement = $this->Database->prepare("INSERT INTO tl_secure_accessdata %s WHERE id=?")
-											->set($arrSet)
-											->execute($objData->id);
+			// Do update
+			$this->Database->prepare("UPDATE tl_secure_accessdata %s WHERE id=?")
+						   ->set($arrSet)
+						   ->execute($objData->id);
 		}
 	}
 }
