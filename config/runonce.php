@@ -27,6 +27,19 @@ namespace SecureAccessdata;
 class SecureAccessdataRunonce extends \Controller
 {
 	/**
+	 * __construct function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+		$this->import('Database');
+	}
+	
+	
+	/**
 	 * Execute all runonce files in module config directories
 	 */
 	public function run()
