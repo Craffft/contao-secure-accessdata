@@ -939,7 +939,7 @@ class tl_secure_accessdata extends \Backend
 			$image .= '_';
 		}
 
-		$args[0] = sprintf('<div class="list_icon_new" style="background-image:url(\'%ssystem/themes/%s/images/%s.gif\')">&nbsp;</div>', TL_SCRIPT_URL, $this->getTheme(), $image);
+		$args[0] = sprintf('<div class="list_icon_new" style="background-image:url(\'%ssystem/modules/secure_accessdata/assets/images/%s.gif\')">&nbsp;</div>', TL_SCRIPT_URL, $image);
 
 		// Set User
 		if (is_numeric($args[3]))

@@ -35,7 +35,7 @@
 $GLOBALS['BE_MOD']['system']['tl_secure_accessdata'] = array
 (
 	'tables'       => array('tl_secure_accessdata'),
-	'icon'         => 'system/modules/secure_accessdata/html/protect.gif'
+	'icon'         => 'system/modules/secure_accessdata/assets/images/protect_.gif'
 );
 
 
