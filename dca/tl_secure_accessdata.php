@@ -43,7 +43,16 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 	'config' => array
 	(
 		'dataContainer'				=> 'Table',
-		'enableVersioning'			=> true
+		'enableVersioning'			=> true,
+		'sql' => array
+		(
+			'keys' => array
+			(
+				'id' => 'primary',
+				'pid' => 'index',
+				'alias' => 'index'
+			)
+		)
 	),
 
 	// List
@@ -168,7 +177,8 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'sorting'				=> true,
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('mandatory'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('mandatory'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'type' => array
 		(
@@ -181,7 +191,8 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'inputType'				=> 'select',
 			'options'				=> $GLOBALS['TL_SADTY'],
 			'reference'				=> &$GLOBALS['TL_LANG']['SADTY'],
-			'eval'					=> array('helpwizard'=>true, 'submitOnChange'=>true, 'tl_class'=>'w50')
+			'eval'					=> array('helpwizard'=>true, 'submitOnChange'=>true, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(32) NOT NULL default ''"
 		),
 		'author' => array
 		(
@@ -193,14 +204,16 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'exclude'				=> true,
 			'inputType'				=> 'select',
 			'foreignKey'			=> 'tl_user.name',
-			'eval'					=> array('doNotCopy'=>true, 'mandatory'=>true, 'includeBlankOption'=>false, 'tl_class'=>'w50')
+			'eval'					=> array('doNotCopy'=>true, 'mandatory'=>true, 'includeBlankOption'=>false, 'tl_class'=>'w50'),
+			'sql'                   => "int(10) unsigned NOT NULL default '0'"
 		),
 		'protect' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['protect'],
 			'exclude'				=> true,
 			'inputType'				=> 'checkbox',
-			'eval'					=> array('encrypt'=>true, 'submitOnChange'=>true)
+			'eval'					=> array('encrypt'=>true, 'submitOnChange'=>true),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'protect_users' => array
 		(
@@ -208,7 +221,8 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'exclude'				=> true,
 			'inputType'				=> 'checkbox',
 			'foreignKey'			=> 'tl_user.name',
-			'eval'					=> array('encrypt'=>true, 'multiple'=>true, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'multiple'=>true, 'tl_class'=>'w50'),
+			'sql'                   => "blob NULL"
 		),
 		'protect_groups' => array
 		(
@@ -216,14 +230,16 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'exclude'				=> true,
 			'inputType'				=> 'checkbox',
 			'foreignKey'			=> 'tl_user_group.name',
-			'eval'					=> array('encrypt'=>true, 'multiple'=>true, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'multiple'=>true, 'tl_class'=>'w50'),
+			'sql'                   => "blob NULL"
 		),
 		'info' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['info'],
 			'exclude'				=> true,
 			'inputType'				=> 'textarea',
-			'eval'					=> array('encrypt'=>true)
+			'eval'					=> array('encrypt'=>true),
+			'sql'                   => "mediumtext NULL"
 		),
 		
 		/* Weblogin */
@@ -232,21 +248,24 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['weblogin_url'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'tl_class'=>'long')
+			'eval'					=> array('encrypt'=>true, 'tl_class'=>'long'),
+			'sql'                   => "mediumtext NULL"
 		),
 		'weblogin_name' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['weblogin_name'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'weblogin_pwd' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['weblogin_pwd'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		
 		/* Contao */
@@ -255,21 +274,24 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['contao_user'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'contao_pwd' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['contao_pwd'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'contao_install_pwd' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['contao_install_pwd'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		
 		/* Local */
@@ -278,14 +300,16 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['url'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'tl_class'=>'long')
+			'eval'					=> array('encrypt'=>true, 'tl_class'=>'long'),
+			'sql'                   => "mediumtext NULL"
 		),
 		'local_root' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['root'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'tl_class'=>'long')
+			'eval'					=> array('encrypt'=>true, 'tl_class'=>'long'),
+			'sql'                   => "mediumtext NULL"
 		),
 		'local_db_server' => array
 		(
@@ -293,28 +317,32 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'exclude'				=> true,
 			'inputType'				=> 'text',
 			'default'				=> 'localhost',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'local_db_name' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['db_name'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'local_db_user' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['db_user'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'local_db_pwd' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['db_pwd'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'local_db_charset' => array
 		(
@@ -322,7 +350,8 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'exclude'				=> true,
 			'inputType'				=> 'text',
 			'default'				=> 'UTF-8',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>8, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>8, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'local_db_port' => array
 		(
@@ -330,7 +359,8 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'exclude'				=> true,
 			'inputType'				=> 'text',
 			'default'				=> '3306',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>4, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>4, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		
 		/* Preview */
@@ -339,14 +369,16 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['url'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'tl_class'=>'long')
+			'eval'					=> array('encrypt'=>true, 'tl_class'=>'long'),
+			'sql'                   => "mediumtext NULL"
 		),
 		'preview_root' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['root'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'tl_class'=>'long')
+			'eval'					=> array('encrypt'=>true, 'tl_class'=>'long'),
+			'sql'                   => "mediumtext NULL"
 		),
 		'preview_db_server' => array
 		(
@@ -354,28 +386,32 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'exclude'				=> true,
 			'inputType'				=> 'text',
 			'default'				=> 'localhost',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'preview_db_name' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['db_name'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'preview_db_user' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['db_user'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'preview_db_pwd' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['db_pwd'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'preview_db_charset' => array
 		(
@@ -383,7 +419,8 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'exclude'				=> true,
 			'inputType'				=> 'text',
 			'default'				=> 'UTF-8',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>8, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>8, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'preview_db_port' => array
 		(
@@ -391,28 +428,32 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'exclude'				=> true,
 			'inputType'				=> 'text',
 			'default'				=> '3306',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>4, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>4, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'preview_ftp_server' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['ftp_server'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'preview_ftp_user' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['ftp_user'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'preview_ftp_pwd' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['ftp_pwd'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'preview_ftp_protocol' => array
 		(
@@ -421,7 +462,8 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'inputType'				=> 'select',
 			'eval'					=> array('tl_class'=>'w50'),
 			'options'				=> $GLOBALS['TL_SAD_FTP_PROTOCOL'],
-			'reference'				=> &$GLOBALS['TL_LANG']['SAD_FTP_PROTOCOL']
+			'reference'				=> &$GLOBALS['TL_LANG']['SAD_FTP_PROTOCOL'],
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'preview_ftp_port' => array
 		(
@@ -429,14 +471,16 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'exclude'				=> true,
 			'inputType'				=> 'text',
 			'default'				=> '21',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>4, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>4, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'preview_ssh_server' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['ssh_server'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'preview_ssh_port' => array
 		(
@@ -444,21 +488,24 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'exclude'				=> true,
 			'inputType'				=> 'text',
 			'default'				=> '22',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>4, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>4, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'preview_ssh_user' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['ssh_user'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'preview_ssh_pwd' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['ssh_pwd'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		
 		/* Online */
@@ -467,14 +514,16 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['url'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'tl_class'=>'long')
+			'eval'					=> array('encrypt'=>true, 'tl_class'=>'long'),
+			'sql'                   => "mediumtext NULL"
 		),
 		'online_root' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['root'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'tl_class'=>'long')
+			'eval'					=> array('encrypt'=>true, 'tl_class'=>'long'),
+			'sql'                   => "mediumtext NULL"
 		),
 		'online_db_server' => array
 		(
@@ -482,28 +531,32 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'exclude'				=> true,
 			'inputType'				=> 'text',
 			'default'				=> 'localhost',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'online_db_name' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['db_name'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'online_db_user' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['db_user'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'online_db_pwd' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['db_pwd'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'online_db_charset' => array
 		(
@@ -511,7 +564,8 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'exclude'				=> true,
 			'inputType'				=> 'text',
 			'default'				=> 'UTF-8',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>8, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>8, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'online_db_port' => array
 		(
@@ -519,28 +573,32 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'exclude'				=> true,
 			'inputType'				=> 'text',
 			'default'				=> '3306',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>4, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>4, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'online_ftp_server' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['ftp_server'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'online_ftp_user' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['ftp_user'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'online_ftp_pwd' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['ftp_pwd'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'online_ftp_protocol' => array
 		(
@@ -549,7 +607,8 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'inputType'				=> 'select',
 			'options'				=> $GLOBALS['TL_SAD_FTP_PROTOCOL'],
 			'reference'				=> &$GLOBALS['TL_LANG']['SAD_FTP_PROTOCOL'],
-			'eval'					=> array('encrypt'=>true, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'online_ftp_port' => array
 		(
@@ -557,14 +616,16 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'exclude'				=> true,
 			'inputType'				=> 'text',
 			'default'				=> '21',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>4, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>4, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'online_ssh_server' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['ssh_server'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'online_ssh_port' => array
 		(
@@ -572,21 +633,24 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'exclude'				=> true,
 			'inputType'				=> 'text',
 			'default'				=> '22',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>4, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>4, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'online_ssh_user' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['ssh_user'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'online_ssh_pwd' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['ssh_pwd'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		
 		/* Webadmin */
@@ -595,21 +659,24 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['webadmin_url'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'tl_class'=>'long')
+			'eval'					=> array('encrypt'=>true, 'tl_class'=>'long'),
+			'sql'                   => "mediumtext NULL"
 		),
 		'webadmin_name' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['webadmin_name'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'webadmin_pwd' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['webadmin_pwd'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		
 		/* Mail */
@@ -618,28 +685,32 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['mail_name'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'mail_email' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['mail_email'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'rgxp'=>'email', 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'rgxp'=>'email', 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'mail_loginname' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['mail_loginname'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'mail_pwd' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['mail_pwd'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'mail_crypt' => array
 		(
@@ -647,14 +718,16 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'exclude'				=> true,
 			'inputType'				=> 'select',
 			'options'				=> $GLOBALS['TL_SAD_MAIL_CRYPT'],
-			'eval'					=> array('encrypt'=>true, 'includeBlankOption'=>true, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'includeBlankOption'=>true, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'mail_smtp_host' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['mail_smtp_host'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'mail_smtp_port' => array
 		(
@@ -662,14 +735,16 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'exclude'				=> true,
 			'inputType'				=> 'text',
 			'default'				=> '25',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'mail_imap_host' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['mail_imap_host'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'mail_imap_port' => array
 		(
@@ -677,14 +752,16 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'exclude'				=> true,
 			'inputType'				=> 'text',
 			'default'				=> '993',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'mail_pop_host' => array
 		(
 			'label'					=> &$GLOBALS['TL_LANG']['tl_secure_accessdata']['mail_pop_host'],
 			'exclude'				=> true,
 			'inputType'				=> 'text',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		),
 		'mail_pop_port' => array
 		(
@@ -692,7 +769,8 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'exclude'				=> true,
 			'inputType'				=> 'text',
 			'default'				=> '995',
-			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50')
+			'eval'					=> array('encrypt'=>true, 'maxlength'=>120, 'tl_class'=>'w50'),
+			'sql'                   => "varchar(255) NOT NULL default ''"
 		)
 	)
 );
@@ -712,7 +790,8 @@ if(isset($GLOBALS['BE_MOD']['li_crm']))
 		'sorting'				=> true,
 	    'exclude'   			=> true,
 	    'options_callback'      => array('Customer', 'getCustomerOptions'),
-	    'eval'                  => array('mandatory'=>true, 'tl_class'=>'w50', 'chosen'=>true, 'includeBlankOption'=>true, 'submitOnChange'=>true)
+	    'eval'                  => array('mandatory'=>true, 'tl_class'=>'w50', 'chosen'=>true, 'includeBlankOption'=>true, 'submitOnChange'=>true),
+		'sql'                   => "int(10) unsigned NOT NULL default '0'"
 	);
 	
 	// Add li_crm_customer to label fields
