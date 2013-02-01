@@ -1,47 +1,31 @@
-<?php if (!defined('TL_ROOT')) die('You cannot access this file directly!');
+<?php
 
 /**
  * Contao Open Source CMS
- * Copyright (C) 2005-2011 Leo Feyer
  *
- * Formerly known as TYPOlight Open Source CMS.
+ * Copyright (C) 2005-2013 Leo Feyer
  *
- * This program is free software: you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation, either
- * version 3 of the License, or (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
- * 
- * You should have received a copy of the GNU Lesser General Public
- * License along with this program. If not, please visit the Free
- * Software Foundation website at <http://www.gnu.org/licenses/>.
- *
- * PHP version 5
- * @copyright  Daniel Kiesel 2011 
- * @author     Daniel Kiesel 
- * @package    secure_accessdata 
- * @license    LGPL 
- * @filesource
+ * @package   photoalbums2
+ * @author    Daniel Kiesel <https://github.com/icodr8>
+ * @license   LGPL
+ * @copyright Daniel Kiesel 2011-2013
  */
 
-class SecureAccessdataRunonce extends Controller
-{
-	/**
-	 * Initialize the object
-	 */
-	public function __construct()
-	{
-		parent::__construct();
 
-		$this->import('Database');
-		$this->import('Encryption');
-	}
-	
-	
+/**
+ * Namespace
+ */
+namespace SecureAccessdata;
+
+/**
+ * Class SecureAccessdataRunonce
+ *
+ * @copyright  Daniel Kiesel 2011-2013
+ * @author     Daniel Kiesel <https://github.com/icodr8>
+ * @package    secure_accessdata
+ */
+class SecureAccessdataRunonce extends \Controller
+{
 	/**
 	 * Execute all runonce files in module config directories
 	 */
@@ -62,21 +46,18 @@ class SecureAccessdataRunonce extends Controller
 		if($this->Database->tableExists('tl_secure_accessdata'))
 		{
 			// Read fields decrypt them an save them
-			$objData = $this->Database->prepare("SELECT id, access_title, author FROM tl_secure_accessdata")
-									  ->execute();
+			$objData = \SecureAccessdataModel::findAll();
 			
 			while($objData->next())
 			{
 				$arrSet = array();
 				
 				// Set vars for update
-				$arrSet['access_title'] = ($this->Encryption->decrypt($objData->access_title) == '') ? $objData->access_title : $this->Encryption->decrypt($objData->access_title);
-				$arrSet['author'] = ($this->Encryption->decrypt($objData->author) == '') ? $objData->author : $this->Encryption->decrypt($objData->author);
+				$objData->access_title = (\Encryption::decrypt($objData->access_title) == '') ? $objData->access_title : \Encryption::decrypt($objData->access_title);
+				$objData->author = (\Encryption::decrypt($objData->author) == '') ? $objData->author : \Encryption::decrypt($objData->author);
 				
-				// Do update
-				$this->Database->prepare("UPDATE tl_secure_accessdata %s WHERE id=?")
-							   ->set($arrSet)
-							   ->execute($objData->id);
+				// Save
+				$objData->save();
 			}
 		}
 	}
