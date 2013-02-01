@@ -824,9 +824,7 @@ class tl_secure_accessdata extends \Backend
 		parent::__construct();
 
 		// Import
-		//$this->import('Database');
-		//$this->import('Encryption');
-		//$this->import('BackendUser', 'User');
+		$this->import('BackendUser', 'User');
 	}
 
 
