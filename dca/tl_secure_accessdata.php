@@ -877,36 +877,39 @@ class tl_secure_accessdata extends \Backend
 		// Get all secure accessdata results
 		$objSecureAccessdata = \SecureAccessdataModel::findAll();
 
-		while ($objSecureAccessdata->next())
+		if ($objSecureAccessdata !== null)
 		{
-			$id = $objSecureAccessdata->id;
-			$author = $objSecureAccessdata->author;
-			$protect = \Encryption::decrypt($objSecureAccessdata->protect);
-			$protect_users = \Encryption::decrypt(deserialize($objSecureAccessdata->protect_users));
-			$protect_groups = \Encryption::decrypt(deserialize($objSecureAccessdata->protect_groups));
-
-			// If protected
-			if ($protect == 1)
+			while ($objSecureAccessdata->next())
 			{
-				// If not admin
-				if ($this->User->admin != 1)
+				$id = $objSecureAccessdata->id;
+				$author = $objSecureAccessdata->author;
+				$protect = \Encryption::decrypt($objSecureAccessdata->protect);
+				$protect_users = \Encryption::decrypt(deserialize($objSecureAccessdata->protect_users));
+				$protect_groups = \Encryption::decrypt(deserialize($objSecureAccessdata->protect_groups));
+	
+				// If protected
+				if ($protect == 1)
 				{
-					// If not author
-					if ($this->User->id != $author)
+					// If not admin
+					if ($this->User->admin != 1)
 					{
-						// If not in user array
-						if (!(is_array($protect_users) && count($protected_users) < 1 && in_array($this->User->id, $protect_users)))
+						// If not author
+						if ($this->User->id != $author)
 						{
-							// If not in group array
-							if (!(is_array($this->User->groups) && is_array($protect_groups) && count(array_intersect($this->User->groups, $protect_groups)) > 0))
+							// If not in user array
+							if (!(is_array($protect_users) && count($protected_users) < 1 && in_array($this->User->id, $protect_users)))
 							{
-								if ($onlyIDs == true)
+								// If not in group array
+								if (!(is_array($this->User->groups) && is_array($protect_groups) && count(array_intersect($this->User->groups, $protect_groups)) > 0))
 								{
-									$arrClosedEntries[] = $id;
-								}
-								else
-								{
-									$arrClosedEntries[] = array('id!=?', $id);
+									if ($onlyIDs == true)
+									{
+										$arrClosedEntries[] = $id;
+									}
+									else
+									{
+										$arrClosedEntries[] = array('id!=?', $id);
+									}
 								}
 							}
 						}
