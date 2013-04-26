@@ -793,7 +793,7 @@ if (isset($GLOBALS['BE_MOD']['li_crm']))
 		//'search'    => true,
 		'sorting'    => true,
 		'exclude'      => true,
-		'options_callback'      => array('Customer', 'getCustomerOptions'),
+		'options_callback'      => array('LiCRM\Customer', 'getCustomerOptions'),
 		'eval'                  => array('mandatory'=>true, 'tl_class'=>'w50', 'chosen'=>true, 'includeBlankOption'=>true, 'submitOnChange'=>true),
 		'sql'                   => "int(10) unsigned NOT NULL default '0'"
 	);
