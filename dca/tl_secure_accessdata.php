@@ -3,12 +3,12 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (C) 2005-2013 Leo Feyer
+ * Copyright (C) 2005-2014 Leo Feyer
  *
- * @package   photoalbums2
- * @author    Daniel Kiesel <https://github.com/icodr8>
- * @license   LGPL
- * @copyright Daniel Kiesel 2011-2013
+ * @package    photoalbums2
+ * @author     Daniel Kiesel <https://github.com/icodr8>
+ * @license    LGPL
+ * @copyright  Daniel Kiesel 2011-2013
  */
 
 
@@ -813,6 +813,7 @@ if (isset($GLOBALS['BE_MOD']['li_crm']))
  */
 class tl_secure_accessdata extends \Backend
 {
+
 	/**
 	 * __construct function.
 	 *
@@ -886,7 +887,7 @@ class tl_secure_accessdata extends \Backend
 				$protect = \Encryption::decrypt($objSecureAccessdata->protect);
 				$protect_users = \Encryption::decrypt(deserialize($objSecureAccessdata->protect_users));
 				$protect_groups = \Encryption::decrypt(deserialize($objSecureAccessdata->protect_groups));
-	
+
 				// If protected
 				if ($protect == 1)
 				{
