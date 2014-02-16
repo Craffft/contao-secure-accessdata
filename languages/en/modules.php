@@ -23,7 +23,7 @@
  * PHP version 5
  * @copyright  Daniel Kiesel 2011-2014
  * @author     Daniel Kiesel <https://github.com/icodr8>
- * @package    secure_accessdata 
+ * @package    secure-accessdata
  * @license     LGPL 
  * @filesource
  */
