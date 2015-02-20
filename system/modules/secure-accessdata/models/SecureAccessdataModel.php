@@ -6,7 +6,7 @@
  * Copyright (C) 2005-2014 Leo Feyer
  *
  * @package    photoalbums2
- * @author     Daniel Kiesel <https://github.com/icodr8>
+ * @author     Daniel Kiesel <daniel@craffft.de>
  * @license    LGPL
  * @copyright  Daniel Kiesel 2011-2013
  */
@@ -21,7 +21,7 @@ namespace SecureAccessdata;
  * Class SecureAccessdataModel
  *
  * @copyright  Daniel Kiesel 2011-2014
- * @author     Daniel Kiesel <https://github.com/icodr8>
+ * @author     Daniel Kiesel <daniel@craffft.de>
  * @package    secure-accessdata
  */
 class SecureAccessdataModel extends \Model
