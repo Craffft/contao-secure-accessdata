@@ -22,7 +22,7 @@
  *
  * PHP version 5
  * @copyright  Daniel Kiesel 2011-2014
- * @author     Daniel Kiesel <https://github.com/icodr8>
+ * @author     Daniel Kiesel <daniel@craffft.de>
  * @package    secure-accessdata
  * @license     LGPL 
  * @filesource
