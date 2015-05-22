@@ -203,7 +203,6 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 			'label'     => &$GLOBALS['TL_LANG']['tl_secure_accessdata']['author'],
 			'default'    => $this->User->id,
 			'filter'    => true,
-			//'search'    => true,
 			'sorting'    => true,
 			'exclude'    => true,
 			'inputType'    => 'select',
