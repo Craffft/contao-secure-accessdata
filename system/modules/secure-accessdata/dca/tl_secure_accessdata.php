@@ -201,7 +201,7 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 		'author' => array
 		(
 			'label'     => &$GLOBALS['TL_LANG']['tl_secure_accessdata']['author'],
-			'default'    => $this->User->id,
+			'default'    => \BackendUser::getInstance()->id,
 			'filter'    => true,
 			'sorting'    => true,
 			'exclude'    => true,
