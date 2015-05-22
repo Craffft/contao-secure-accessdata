@@ -201,9 +201,8 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 		'author' => array
 		(
 			'label'     => &$GLOBALS['TL_LANG']['tl_secure_accessdata']['author'],
-			'default'    => $this->User->id,
+			'default'    => \BackendUser::getInstance()->id,
 			'filter'    => true,
-			//'search'    => true,
 			'sorting'    => true,
 			'exclude'    => true,
 			'inputType'    => 'select',
@@ -898,7 +897,7 @@ class tl_secure_accessdata extends \Backend
 						if ($this->User->id != $author)
 						{
 							// If not in user array
-							if (!(is_array($protect_users) && count($protected_users) < 1 && in_array($this->User->id, $protect_users)))
+							if (!(is_array($protect_users) && count($protect_users) < 1 && in_array($this->User->id, $protect_users)))
 							{
 								// If not in group array
 								if (!(is_array($this->User->groups) && is_array($protect_groups) && count(array_intersect($this->User->groups, $protect_groups)) > 0))
