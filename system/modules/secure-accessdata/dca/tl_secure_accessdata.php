@@ -51,7 +51,7 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
         ),
         'label'             => array
         (
-            'fields'         => array('icon', 'access_title', 'type', 'author'),
+            'fields'         => array('icon', 'access_title', 'type', 'author', 'accessdata'),
             'showColumns'    => true,
             'label_callback' => array('tl_secure_accessdata', 'labelCallback')
         ),
@@ -168,6 +168,10 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
         'tstamp'               => array
         (
             'sql' => "int(10) unsigned NOT NULL default '0'"
+        ),
+        'accessdata'           => array
+        (
+            'label'     => &$GLOBALS['TL_LANG']['tl_secure_accessdata']['accessdata']
         ),
         'access_title'         => array
         (
@@ -301,7 +305,7 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
             'label'     => &$GLOBALS['TL_LANG']['tl_secure_accessdata']['encryption_key'],
             'exclude'   => true,
             'inputType' => 'textarea',
-            'eval'      => array('encrypt' => true, 'maxlength' => 4096, 'tl_class' => 'w50'),
+            'eval'      => array('encrypt' => true, 'maxlength' => 4096),
             'sql'       => "text NULL"
         ),
         /* Local */
@@ -891,6 +895,46 @@ class tl_secure_accessdata extends \Backend
             if ($objUser !== null) {
                 $args[3] = $objUser->name;
             }
+        }
+
+        switch ($row['type']) {
+            case 'weblogin':
+                $args[4] = sprintf('%s<br>%s',
+                    \Encryption::decrypt($row['weblogin_name']),
+                    \Encryption::decrypt($row['weblogin_pwd'])
+                );
+                break;
+
+            case 'contao_login':
+                $args[4] = sprintf('%s<br>%s',
+                    \Encryption::decrypt($row['contao_user']),
+                    \Encryption::decrypt($row['contao_pwd'])
+                );
+                break;
+
+            case 'encryption_key':
+                $strEncryptionKey = \Encryption::decrypt($row['encryption_key']);
+
+                if (strlen($strEncryptionKey) <= 32) {
+                    $args[4] = $strEncryptionKey;
+                } else {
+                    $args[4] = substr($strEncryptionKey, 0, 29) . '...';
+                }
+                break;
+
+            case 'mail':
+                $args[4] = sprintf('%s<br>%s<br>%s',
+                    \Encryption::decrypt($row['mail_email']),
+                    \Encryption::decrypt($row['mail_loginname']),
+                    \Encryption::decrypt($row['mail_pwd'])
+                );
+                break;
+
+            case 'project':
+                break;
+
+            case 'online_project':
+                break;
         }
 
         return $args;

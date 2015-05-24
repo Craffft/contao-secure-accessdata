@@ -21,6 +21,7 @@ $GLOBALS['TL_LANG']['tl_secure_accessdata']['label_callback_protect_groups'] = '
 /**
  * Fields
  */
+$GLOBALS['TL_LANG']['tl_secure_accessdata']['accessdata'] = array('Zugangsdaten', 'Stellt die Zugangsdaten dar.');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['access_title'] = array('Name', 'Name dieser Zugangsdaten.');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['type'] = array('Typ', 'Hier wird der Zugangsdaten-Typ gewählt.');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['author'] = array('Autor', 'Autor dieser Zugangsdaten.');
