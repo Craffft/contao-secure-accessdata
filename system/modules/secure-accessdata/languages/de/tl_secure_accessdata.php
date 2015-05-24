@@ -1,33 +1,15 @@
-<?php if (!defined('TL_ROOT')) die('You cannot access this file directly!');
+<?php
 
 /**
  * Contao Open Source CMS
- * Copyright (C) 2005-2014 Leo Feyer
  *
- * Formerly known as TYPOlight Open Source CMS.
+ * Copyright (C) 2005-2015 Leo Feyer
  *
- * This program is free software: you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation, either
- * version 3 of the License, or (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
- * 
- * You should have received a copy of the GNU Lesser General Public
- * License along with this program. If not, please visit the Free
- * Software Foundation website at <http://www.gnu.org/licenses/>.
- *
- * PHP version 5
- * @copyright  Daniel Kiesel 2011-2014
+ * @package    photoalbums2
  * @author     Daniel Kiesel <daniel@craffft.de>
- * @package    secure-accessdata
- * @license     LGPL 
- * @filesource
+ * @license    LGPL
+ * @copyright  Daniel Kiesel 2011-2015
  */
-
 
 /**
  * Label callback
@@ -36,14 +18,13 @@ $GLOBALS['TL_LANG']['tl_secure_accessdata']['label_callback_protect'] = 'Geschü
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['label_callback_protect_users'] = 'User';
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['label_callback_protect_groups'] = 'Gruppen';
 
-
 /**
  * Fields
  */
+$GLOBALS['TL_LANG']['tl_secure_accessdata']['accessdata'] = array('Zugangsdaten', 'Stellt die Zugangsdaten dar.');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['access_title'] = array('Name', 'Name dieser Zugangsdaten.');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['type'] = array('Typ', 'Hier wird der Zugangsdaten-Typ gewählt.');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['author'] = array('Autor', 'Autor dieser Zugangsdaten.');
-$GLOBALS['TL_LANG']['tl_secure_accessdata']['li_crm_customer'] = array('Kunde', 'Wählen Sie hier einen Kunden aus, dem diese Zugangsdaten zugewiesen werden sollen.');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['protect'] = array('Zugriff schützen', 'Hier können Sie diese Zugangsdaten nur für bestimmte User und Gruppen freigeben.');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['protect_users'] = array('User mit Zugriff', 'Wählen Sie hier die User aus, die Zugriff auf diese Zugangsdaten haben dürfen.');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['protect_groups'] = array('Gruppen mit Zugriff', 'Wählen Sie hier die Gruppen aus, die Zugriff auf diese Zugangsdaten haben dürfen.');
@@ -54,6 +35,7 @@ $GLOBALS['TL_LANG']['tl_secure_accessdata']['weblogin_pwd'] = array('Passwort', 
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['contao_user'] = array('Contao Benutzername', 'Der Benutzername der Contao Installation.');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['contao_pwd'] = array('Contao Passwort', 'Das zum Benutzernamen passende Passwort.');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['contao_install_pwd'] = array('Contao installations Passwort', 'Das Passwort für die Contao Installation.');
+$GLOBALS['TL_LANG']['tl_secure_accessdata']['encryption_key'] = array('Schlüssel', 'Bitte geben Sie den Schlüssel für die Verschlüsselung ein.');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['url'] = array('URL', 'Hier wird die komplette URL angegeben.');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['root'] = array('Root', 'Hier wird die Adresse zum Root angegeben.');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['db_server'] = array('Datenbank Server', 'Datenbank Server (Standard: \"localhost\").');
@@ -86,7 +68,6 @@ $GLOBALS['TL_LANG']['tl_secure_accessdata']['mail_imap_port'] = array('E-Mail IM
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['mail_pop_host'] = array('E-Mail POP Host', 'E-Mail POP Host.');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['mail_pop_port'] = array('E-Mail POP Port', 'E-Mail POP Port.');
 
-
 /**
  * Reference
  */
@@ -95,6 +76,7 @@ $GLOBALS['TL_LANG']['tl_secure_accessdata']['protect_legend'] = 'Zugriff Schütz
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['info_legend'] = 'Zusätzliche Informationen';
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['weblogin_legend'] = 'Web Login';
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['contao_legend'] = 'Contao';
+$GLOBALS['TL_LANG']['tl_secure_accessdata']['encryption_key_legend'] = 'Verschlüsselung';
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['local_legend'] = 'Lokal Allgemeines';
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['local_db_legend'] = 'Lokal Datenbank';
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['preview_legend'] = 'Preview Allgemeines';
@@ -111,7 +93,6 @@ $GLOBALS['TL_LANG']['tl_secure_accessdata']['mail_smtp_legend'] = 'E-Mail (SMTP)
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['mail_imap_legend'] = 'E-Mail (IMAP)';
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['mail_pop_legend'] = 'E-Mail (POP)';
 
-
 /**
  * Buttons
  */
@@ -120,5 +101,3 @@ $GLOBALS['TL_LANG']['tl_secure_accessdata']['edit'] = array('Zugangsdaten bearbe
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['copy'] = array('Zugangsdaten duplizieren', 'Zugangsdaten ID %s duplizieren');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['delete'] = array('Zugangsdaten löschen', 'Zugangsdaten ID %s löschen');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['show'] = array('Zugangsdaten anzeigen', 'Zugangsdaten ID %s anzeigen');
- 
-?>

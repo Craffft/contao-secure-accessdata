@@ -2,9 +2,9 @@
 
 /**
  * Contao Open Source CMS
- * 
- * Copyright (C) 2005-2014 Leo Feyer
- * 
+ *
+ * Copyright (C) 2005-2015 Leo Feyer
+ *
  * @package secure-accessdata
  * @link    https://contao.org
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
@@ -16,7 +16,7 @@
  */
 ClassLoader::addNamespaces(array
 (
-	'SecureAccessdata',
+    'SecureAccessdata',
 ));
 
 
@@ -25,6 +25,6 @@ ClassLoader::addNamespaces(array
  */
 ClassLoader::addClasses(array
 (
-	// Models
-	'SecureAccessdata\SecureAccessdataModel' => 'system/modules/secure-accessdata/models/SecureAccessdataModel.php',
+    // Models
+    'SecureAccessdata\SecureAccessdataModel' => 'system/modules/secure-accessdata/models/SecureAccessdataModel.php',
 ));
