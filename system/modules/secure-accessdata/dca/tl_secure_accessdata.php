@@ -98,29 +98,29 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
     'palettes'    => array
     (
         '__selector__'   => array('type', 'protect'),
-        'default'        => '{title_legend},access_title,type,author,li_crm_customer;
+        'default'        => '{title_legend},access_title,type,author;
                                 {protect_legend},protect;
                                 {info_legend},info',
-        'weblogin'       => '{title_legend},access_title,type,author,li_crm_customer;
+        'weblogin'       => '{title_legend},access_title,type,author;
                                 {weblogin_legend},weblogin_url,weblogin_name,weblogin_pwd;
                                 {protect_legend},protect;
                                 {info_legend},info',
-        'contao_login'   => '{title_legend},access_title,type,author,li_crm_customer;
+        'contao_login'   => '{title_legend},access_title,type,author;
                                 {contao_legend},contao_user,contao_pwd,contao_install_pwd;
                                 {protect_legend},protect;
                                 {info_legend},info',
-        'encryption_key' => '{title_legend},access_title,type,author,li_crm_customer;
+        'encryption_key' => '{title_legend},access_title,type,author;
                                 {encryption_key_legend},encryption_key;
                                 {protect_legend},protect;
                                 {info_legend},info',
-        'mail'           => '{title_legend},access_title,type,author,li_crm_customer;
+        'mail'           => '{title_legend},access_title,type,author;
                                 {mail_legend},mail_name,mail_email,mail_loginname,mail_pwd,mail_crypt;
                                 {mail_smtp_legend},mail_smtp_host,mail_smtp_port;
                                 {mail_imap_legend},mail_imap_host,mail_imap_port;
                                 {mail_pop_legend},mail_pop_host,mail_pop_port;
                                 {protect_legend},protect;
                                 {info_legend},info',
-        'project'        => '{title_legend},access_title,type,author,li_crm_customer;
+        'project'        => '{title_legend},access_title,type,author;
                                 {webadmin_legend},webadmin_url,webadmin_name,webadmin_pwd;
                                 {contao_legend},contao_user,contao_pwd,contao_install_pwd;
                                 {local_legend},local_url,local_root;
@@ -135,7 +135,7 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
                                 {online_ssh_legend},online_ssh_server,online_ssh_port,online_ssh_user,online_ssh_pwd;
                                 {protect_legend},protect;
                                 {info_legend},info',
-        'online_project' => '{title_legend},access_title,type,author,li_crm_customer;
+        'online_project' => '{title_legend},access_title,type,author;
                                 {webadmin_legend},webadmin_url,webadmin_name,webadmin_pwd;
                                 {contao_legend},contao_user,contao_pwd,contao_install_pwd;
                                 {online_legend},online_url,online_root;
@@ -782,35 +782,6 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
 );
 
 /**
- * Settings for Liplex CRM
- */
-if (isset($GLOBALS['BE_MOD']['li_crm'])) {
-    $GLOBALS['TL_DCA']['tl_secure_accessdata']['fields']['li_crm_customer'] = array
-    (
-        'label'            => &$GLOBALS['TL_LANG']['tl_secure_accessdata']['li_crm_customer'],
-        'inputType'        => 'select',
-        'filter'           => true,
-        //'search'    => true,
-        'sorting'          => true,
-        'exclude'          => true,
-        'options_callback' => array('LiCRM\Customer', 'getCustomerOptions'),
-        'eval'             => array('mandatory'          => true,
-                                    'tl_class'           => 'w50',
-                                    'chosen'             => true,
-                                    'includeBlankOption' => true,
-                                    'submitOnChange'     => true
-        ),
-        'sql'              => "int(10) unsigned NOT NULL default '0'"
-    );
-
-    // Add li_crm_customer to label fields
-    array_insert($GLOBALS['TL_DCA']['tl_secure_accessdata']['list']['label']['fields'], 4, array
-    (
-        'li_crm_customer'
-    ));
-}
-
-/**
  * tl_secure_accessdata class.
  *
  * @extends Backend
@@ -919,18 +890,6 @@ class tl_secure_accessdata extends \Backend
 
             if ($objUser !== null) {
                 $args[3] = $objUser->name;
-            }
-        }
-
-        // Only Liplex CRM
-        if (isset($GLOBALS['BE_MOD']['li_crm'])) {
-            // Set customer
-            if (is_numeric($args[4])) {
-                $objMember = \MemberModel::findByPk($args[4]);
-
-                if ($objMember !== null) {
-                    $args[4] = $objMember->customerNumber . ' ' . $objMember->customerName;
-                }
             }
         }
 

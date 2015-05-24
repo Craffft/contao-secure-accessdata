@@ -24,7 +24,6 @@ $GLOBALS['TL_LANG']['tl_secure_accessdata']['label_callback_protect_groups'] = '
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['access_title'] = array('Name', 'Name dieser Zugangsdaten.');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['type'] = array('Typ', 'Hier wird der Zugangsdaten-Typ gewählt.');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['author'] = array('Autor', 'Autor dieser Zugangsdaten.');
-$GLOBALS['TL_LANG']['tl_secure_accessdata']['li_crm_customer'] = array('Kunde', 'Wählen Sie hier einen Kunden aus, dem diese Zugangsdaten zugewiesen werden sollen.');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['protect'] = array('Zugriff schützen', 'Hier können Sie diese Zugangsdaten nur für bestimmte User und Gruppen freigeben.');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['protect_users'] = array('User mit Zugriff', 'Wählen Sie hier die User aus, die Zugriff auf diese Zugangsdaten haben dürfen.');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['protect_groups'] = array('Gruppen mit Zugriff', 'Wählen Sie hier die Gruppen aus, die Zugriff auf diese Zugangsdaten haben dürfen.');
