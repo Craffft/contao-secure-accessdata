@@ -1,33 +1,15 @@
-<?php if (!defined('TL_ROOT')) die('You cannot access this file directly!');
+<?php
 
 /**
  * Contao Open Source CMS
- * Copyright (C) 2005-2014 Leo Feyer
  *
- * Formerly known as TYPOlight Open Source CMS.
+ * Copyright (C) 2005-2015 Leo Feyer
  *
- * This program is free software: you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation, either
- * version 3 of the License, or (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
- * 
- * You should have received a copy of the GNU Lesser General Public
- * License along with this program. If not, please visit the Free
- * Software Foundation website at <http://www.gnu.org/licenses/>.
- *
- * PHP version 5
- * @copyright  Daniel Kiesel 2011-2014
+ * @package    photoalbums2
  * @author     Daniel Kiesel <daniel@craffft.de>
- * @package    secure-accessdata
- * @license     LGPL 
- * @filesource
+ * @license    LGPL
+ * @copyright  Daniel Kiesel 2011-2015
  */
-
 
 /**
  * Label callback
@@ -35,7 +17,6 @@
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['label_callback_protect'] = 'protected';
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['label_callback_protect_users'] = 'users';
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['label_callback_protect_groups'] = 'groups';
-
 
 /**
  * Fields
@@ -86,7 +67,6 @@ $GLOBALS['TL_LANG']['tl_secure_accessdata']['mail_imap_port'] = array('Email ima
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['mail_pop_host'] = array('Email pop host', 'Email pop host.');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['mail_pop_port'] = array('Email pop port', 'Email pop port.');
 
-
 /**
  * Reference
  */
@@ -111,7 +91,6 @@ $GLOBALS['TL_LANG']['tl_secure_accessdata']['mail_smtp_legend'] = 'Email (SMTP)'
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['mail_imap_legend'] = 'Email (IMAP)';
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['mail_pop_legend'] = 'Email (POP)';
 
-
 /**
  * Buttons
  */
@@ -120,5 +99,3 @@ $GLOBALS['TL_LANG']['tl_secure_accessdata']['edit'] = array('Edit accessdata', '
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['copy'] = array('Duplicate accessdata', 'Duplicate accessdata ID %s');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['delete'] = array('Delete accessdata', 'Delete accessdata ID %s');
 $GLOBALS['TL_LANG']['tl_secure_accessdata']['show'] = array('Show accessdata', 'Show accessdata ID %s');
-
-?>
