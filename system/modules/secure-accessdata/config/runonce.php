@@ -57,6 +57,7 @@ class SecureAccessdataRunonce extends \Controller
             // Read fields decrypt them an save them
             $objData = \SecureAccessdataModel::findAll();
 
+            if ($objData !== null) {
                 while ($objData->next()) {
                     $arrSet = array();
 
@@ -67,6 +68,7 @@ class SecureAccessdataRunonce extends \Controller
                     // Save
                     $objData->save();
                 }
+            }
         }
     }
 }
