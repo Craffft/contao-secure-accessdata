@@ -101,12 +101,16 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
         'default'        => '{title_legend},access_title,type,author,li_crm_customer;
                                 {protect_legend},protect;
                                 {info_legend},info',
+        'weblogin'       => '{title_legend},access_title,type,author,li_crm_customer;
+                                {weblogin_legend},weblogin_url,weblogin_name,weblogin_pwd;
+                                {protect_legend},protect;
+                                {info_legend},info',
         'contao_login'   => '{title_legend},access_title,type,author,li_crm_customer;
                                 {contao_legend},contao_user,contao_pwd,contao_install_pwd;
                                 {protect_legend},protect;
                                 {info_legend},info',
-        'weblogin'       => '{title_legend},access_title,type,author,li_crm_customer;
-                                {weblogin_legend},weblogin_url,weblogin_name,weblogin_pwd;
+        'encryption_key' => '{title_legend},access_title,type,author,li_crm_customer;
+                                {encryption_key_legend},encryption_key;
                                 {protect_legend},protect;
                                 {info_legend},info',
         'mail'           => '{title_legend},access_title,type,author,li_crm_customer;
@@ -290,6 +294,15 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
             'inputType' => 'text',
             'eval'      => array('encrypt' => true, 'maxlength' => 120, 'tl_class' => 'w50'),
             'sql'       => "varchar(255) NOT NULL default ''"
+        ),
+        /* Encryption Key */
+        'encryption_key'   => array
+        (
+            'label'     => &$GLOBALS['TL_LANG']['tl_secure_accessdata']['encryption_key'],
+            'exclude'   => true,
+            'inputType' => 'textarea',
+            'eval'      => array('encrypt' => true, 'maxlength' => 4096, 'tl_class' => 'w50'),
+            'sql'       => "text NULL"
         ),
         /* Local */
         'local_url'            => array

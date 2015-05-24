@@ -14,8 +14,9 @@
 /**
  * Secure Accessdata types
  */
-$GLOBALS['TL_LANG']['SADTY']['contao_login'] = array('Contao login', 'Contao login');
 $GLOBALS['TL_LANG']['SADTY']['weblogin'] = array('Web login', 'Web login');
+$GLOBALS['TL_LANG']['SADTY']['contao_login'] = array('Contao login', 'Contao login');
+$GLOBALS['TL_LANG']['SADTY']['encryption_key'] = array('Encryption key', 'Encryption key');
 $GLOBALS['TL_LANG']['SADTY']['mail'] = array('Email account', 'Email account');
 $GLOBALS['TL_LANG']['SADTY']['project'] = array('Project', 'Project');
 $GLOBALS['TL_LANG']['SADTY']['online_project'] = array('Online-Project', 'Online-Project.');

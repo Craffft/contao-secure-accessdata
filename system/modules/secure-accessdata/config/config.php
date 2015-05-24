@@ -34,8 +34,9 @@ if(isset($GLOBALS['BE_MOD']['li_crm']))
  */
 $GLOBALS['TL_SADTY'] = array
 (
-    'contao_login' => 'contao_login',
     'weblogin' => 'weblogin',
+    'contao_login' => 'contao_login',
+    'encryption_key' => 'encryption_key',
     'mail' => 'mail',
     'project' => 'project',
     'online_project' => 'online_project'
