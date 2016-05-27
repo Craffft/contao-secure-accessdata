@@ -849,10 +849,10 @@ class tl_secure_accessdata extends \Backend
                         // If not author
                         if ($this->User->id != $author) {
                             // If not in user array
-                            if (!(is_array($protect_users) && count($protect_users) < 1 && in_array($this->User->id, $protect_users))) {
+                            if (!(is_array($protect_users) && in_array($this->User->id, $protect_users))) {
                                 // If not in group array
-                                if (!(is_array($this->User->groups) && is_array($protect_groups) && count(array_intersect($this->User->groups,
-                                        $protect_groups)) > 0)
+                                if (!(is_array($this->User->groups) && is_array($protect_groups)
+                                    && count(array_intersect($this->User->groups, $protect_groups)) > 0)
                                 ) {
                                     if ($isOnlyIDs == true) {
                                         $arrClosedEntries[] = $id;
