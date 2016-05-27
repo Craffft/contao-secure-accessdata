@@ -16,8 +16,8 @@
  */
 $GLOBALS['BE_MOD']['system']['tl_secure_accessdata'] = array
 (
-    'tables'       => array('tl_secure_accessdata'),
-    'icon'         => 'system/modules/secure-accessdata/assets/images/protect_.gif'
+    'tables' => array('tl_secure_accessdata'),
+    'icon'   => 'system/modules/secure-accessdata/assets/images/protect_.gif'
 );
 
 /**
@@ -25,11 +25,11 @@ $GLOBALS['BE_MOD']['system']['tl_secure_accessdata'] = array
  */
 $GLOBALS['TL_SADTY'] = array
 (
-    'weblogin' => 'weblogin',
-    'contao_login' => 'contao_login',
+    'weblogin'       => 'weblogin',
+    'contao_login'   => 'contao_login',
     'encryption_key' => 'encryption_key',
-    'mail' => 'mail',
-    'project' => 'project',
+    'mail'           => 'mail',
+    'project'        => 'project',
     'online_project' => 'online_project'
 );
 
@@ -38,12 +38,12 @@ $GLOBALS['TL_SADTY'] = array
  */
 $GLOBALS['TL_SAD_FTP_PROTOCOL'] = array
 (
-    'ftp' => 'ftp',
-    'sftp' => 'sftp',
+    'ftp'              => 'ftp',
+    'sftp'             => 'sftp',
     'ftp_ssl_implicit' => 'ftp_ssl_implicit',
-    'ftp_tls_ssl' => 'ftp_tls_ssl',
-    'webdav' => 'webdav',
-    'webdav_https' => 'webdav_https'
+    'ftp_tls_ssl'      => 'ftp_tls_ssl',
+    'webdav'           => 'webdav',
+    'webdav_https'     => 'webdav_https'
 );
 
 /**

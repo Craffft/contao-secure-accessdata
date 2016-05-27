@@ -171,7 +171,7 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
         ),
         'accessdata'           => array
         (
-            'label'     => &$GLOBALS['TL_LANG']['tl_secure_accessdata']['accessdata']
+            'label' => &$GLOBALS['TL_LANG']['tl_secure_accessdata']['accessdata']
         ),
         'access_title'         => array
         (
@@ -300,7 +300,7 @@ $GLOBALS['TL_DCA']['tl_secure_accessdata'] = array
             'sql'       => "varchar(255) NOT NULL default ''"
         ),
         /* Encryption Key */
-        'encryption_key'   => array
+        'encryption_key'       => array
         (
             'label'     => &$GLOBALS['TL_LANG']['tl_secure_accessdata']['encryption_key'],
             'exclude'   => true,
@@ -886,7 +886,11 @@ class tl_secure_accessdata extends \Backend
             $image .= '_';
         }
 
-        $args[0] = sprintf('<div class="list_icon_new" style="background-image:url(\'%ssystem/modules/secure-accessdata/assets/images/%s.gif\')">&nbsp;</div>', TL_SCRIPT_URL, $image);
+        $args[0] = sprintf(
+            '<div class="list_icon_new" style="background-image:url(\'%ssystem/modules/secure-accessdata/assets/images/%s.gif\')">&nbsp;</div>',
+            TL_SCRIPT_URL,
+            $image
+        );
 
         // Set User
         if (is_numeric($args[3])) {
